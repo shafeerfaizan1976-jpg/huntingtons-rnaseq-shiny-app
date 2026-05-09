@@ -1,4 +1,4 @@
-# BF 591 Final Project: Huntington's Disease RNA-Seq Explorer
+# Huntington's Disease RNA-Seq Explorer
 
 An R Shiny application for exploring bulk RNA-Seq data from the Huntington's Disease dataset GSE64810 (post-mortem BA9 prefrontal cortex: 20 HD patients vs 49 neurologically normal controls).
 
@@ -16,14 +16,12 @@ An R Shiny application for exploring bulk RNA-Seq data from the Huntington's Dis
 .
 ├── app.R              # Shiny application (UI + server)
 ├── preprocessing.R    # Script that converts raw GEO files into the CSVs the app loads
-├── data/
-│   ├── sample_info.csv   # Sample metadata (69 rows x 14 columns)
-│   ├── norm_counts.csv   # DESeq2-normalized counts (28,087 rows x 70 columns)
-│   └── de_results.csv    # DESeq2 differential expression results (28,087 rows x 10 columns)
+├── sample_info.csv    # Sample metadata (69 rows x 14 columns)
+├── de_results.csv     # DESeq2 differential expression results (28,087 rows x 10 columns)
 └── README.md
 ```
 
-The three CSVs in `data/` are produced by running `preprocessing.R` on the raw `.txt.gz` files downloaded from the GEO supplementary and series matrix sections.
+Note: `norm_counts.csv` (29 MB) is not included due to file size. To generate it, download `GSE64810_mlhd_DESeq2_norm_counts_adjust.txt.gz` from the [GEO supplementary files](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE64810), place it in the same folder as `preprocessing.R`, and run `preprocessing.R`.
 
 ## Running the app
 
@@ -39,7 +37,7 @@ install.packages(c("shiny", "tidyverse", "DT", "pheatmap", "patchwork", "colourp
 shiny::runApp("app.R")
 ```
 
-3. In each tab, upload the corresponding CSV from the `data/` folder.
+3. In each tab, upload the corresponding CSV file.
 
 ## App tabs
 
